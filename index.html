@@ -10,6 +10,55 @@
         }
         h1 {
             font-size: 50px;
+            text-align: center;
+        }
+        .content {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .content img {
+            width: 30%;
+            height: 30%;
+            object-fit: cover;
+            border-radius: 30px;
+        }
+        .content img:hover {
+            transform: scale(1.1);
+            transition: transform 0.4s;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -19,7 +68,26 @@
         <hr><br>
     </div>
     <div class="content">
-        
+        <img src="/Coisas/goon/20250124_204837.jpg" onclick="showImage(this)">
+        <img src="/Coisas/goon/20250124_204837.jpg" onclick="showImage(this)">
+        <img src="/Coisas/goon/20250124_204837.jpg" onclick="showImage(this)">
     </div>
+    <div class="modal" id="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modal-img">
+    </div>
+    
+    <script>
+        function showImage(img) {
+            const modal = document.getElementById("modal");
+            const modalImg = document.getElementById("modal-img");
+            modalImg.src = img.src;
+            modal.classList.add("active");
+        }
+    
+        function closeModal() {
+            document.getElementById("modal").classList.remove("active");
+        }
+    </script>
 </body>
 </html>
